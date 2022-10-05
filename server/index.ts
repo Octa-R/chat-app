@@ -1,6 +1,11 @@
 import * as express from "express";
 const port = process.env.PORT || 3000;
 const app = express();
+const isDev = process.env.NODE_ENV === "development";
+import dotenv from "dotenv";
+if (isDev) {
+  dotenv.config();
+}
 app.use(express.json());
 app.use(express.static("public"));
 
