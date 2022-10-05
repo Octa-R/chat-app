@@ -7,8 +7,8 @@
     "dev:front": "parcel serve ./client/index.html --dist-dir public",
     "dev": "npx concurrently --names \"CLIENT,API\" -c \"bgBlue.bold,bgMagenta.bold\" \"yarn dev:front\" \"yarn dev:api\"",
     "build:front": "parcel build ./client/index.html --dist-dir public",
-    "build:api": "tsc ./server/index.ts",
-    "build": "yarn build:front && build:api",
+    "build:api": "tsc ",
+    "build": "yarn build:front && yarn build:api",
     "start": "node index.js"
   },
   "dependencies": {
