@@ -16,7 +16,6 @@ class Chat extends HTMLElement {
     state.subscribe(() => {
       const cs = state.getState();
       this.messages = cs.messages;
-      console.log("se actualizaron los mensajes: ", this.messages);
       this.render();
     });
   }
@@ -26,9 +25,7 @@ class Chat extends HTMLElement {
       e.preventDefault();
       const target = e.target as any;
       const newMessage = target["new-message"].value;
-      state.pushMessage(newMessage).then((e) => {
-        console.log("se ejecuto pushMessage");
-      });
+      state.pushMessage(newMessage);
     });
   }
 

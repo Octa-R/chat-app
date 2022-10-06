@@ -1,4 +1,5 @@
 import * as express from "express";
+import helmet from "helmet";
 const port = process.env.PORT || 3000;
 const app = express();
 const isDev = process.env.NODE_ENV === "development";
@@ -6,6 +7,7 @@ import * as dotenv from "dotenv";
 if (isDev) {
   dotenv.config();
 }
+app.use(helmet());
 app.use(express.json());
 app.use(express.static("public"));
 

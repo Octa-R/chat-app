@@ -1,7 +1,7 @@
 import { Storage } from "./storage";
 export interface State {
   data: any;
-  listeners: ((arg0: any) => any)[];
+  listeners: (() => void)[];
   storage: Storage;
 
   init();

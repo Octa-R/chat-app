@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set, get, onValue } from "firebase/database";
-var firebaseConfig = {
+import { getDatabase } from "firebase/database";
+const firebaseConfig = {
   apiKey: "ieYlf4z8g3ppt9bjbi5rFadrZL8VLwAJNzM8KvtD",
   databaseURL: "https://apx-mod-6-67f2e-default-rtdb.firebaseio.com/",
   authDomain: "apx-mod-6-67f2e.firebaseapp.com",

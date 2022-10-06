@@ -58,7 +58,7 @@ export const state = {
   async pushMessage(message: string) {
     const cs = this.getState();
     if (!cs.roomId) {
-      console.error("falta roomId");
+      // console.error("falta roomId");
       return;
     }
 
@@ -71,11 +71,10 @@ export const state = {
     });
     const data = await res.json();
     if (data.ok) {
-      console.log("data ok", data);
       cs.messages.push({ from: cs.name, message: message });
       this.setState(cs);
     } else {
-      console.error(data);
+      // console.error(data);
     }
   },
   setEmailAndName(email: string, name: string) {
@@ -112,7 +111,7 @@ export const state = {
   async askNewRoom() {
     const cs = this.getState();
     if (!cs.userId) {
-      console.error("no hay userId en el state");
+      // console.error("no hay userId en el state");
       return;
     }
     const res = await fetch(API_URL_BASE + "/rooms", {
@@ -125,7 +124,6 @@ export const state = {
     const data = await res.json();
     // console.log(" data que llega en ask new room", data);
     cs.roomId = data.roomId;
-    console.log("state con nuevo roomid", cs);
     this.setState(cs);
   },
   //accede, obtiene el rtdbRoomId
@@ -148,19 +146,13 @@ export const state = {
   },
   // se queda escuchando a los cambios de la rtdb
   listenRoom() {
-    console.log("entro a listen room");
     const cs = this.getState();
-    console.log("rooms" + cs.rtdbRoomId);
     const chat = ref(rtdb, `/rooms/${cs.rtdbRoomId}`);
     onValue(chat, (snapShot) => {
-      console.log("detecto cambio de valor en listenRoom");
       const cs = this.getState();
       const messagesFromServer = snapShot.val();
-      console.log("messages from server", messagesFromServer);
       const messagesList = map(messagesFromServer.messages);
       cs.messages = messagesList;
-      console.log(`escuchando room: ${cs.rtdbRoomId}`);
-      console.log(messagesList);
       this.setState(cs);
     });
   },
@@ -173,6 +165,5 @@ export const state = {
       body: JSON.stringify(userData),
     });
     const data = await res.json();
-    console.log(data);
   },
 };
