@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+
+  client:
+    container_name: client
+    build: ./client
+    ports:
+      - 80:80
+    depends_on:
+      - api
+    env_file:
+      - ./client/client.env
+
+  api:
+    container_name: api
+    build: ./api
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: admin
+    ports:
+    - '5432:5432'
