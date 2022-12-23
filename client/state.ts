@@ -1,4 +1,4 @@
-const API_URL_BASE = "http://localhost:3000";
+const API_URL_BASE = process.env.API_URL_BASE || "http://localhost:3000";
 import { rtdb } from "./rtdb";
 import { ref, onValue } from "firebase/database";
 import { Storage } from "./types/storage";

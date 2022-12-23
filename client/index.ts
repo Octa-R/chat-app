@@ -6,6 +6,8 @@ import "./pages/chat";
 import "./pages/home";
 import "./pages/signup";
 import "./router";
+import "dotenv"
+
 import { state } from "./state";
 (async () => {
   state.init();
